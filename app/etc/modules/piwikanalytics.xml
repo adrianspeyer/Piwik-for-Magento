@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * Piwik Extension for Magento created by Adrian Speyer
+ * Get Piwik at http://www.piwik.org - Open source web analytics
+ *
+ * @category    Mage
+ * @package     modules_piwikanalytics
+ * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ *
+ */
+-->
+
+<config>
+    <modules>
+  <Mage_PiwikAnalytics>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
+	</Mage_PiwikAnalytics>
+	</modules>
+</config>

@@ -1,0 +1,63 @@
+<?php
+/**
+ *
+ * Piwik Extension for Magento created by Adrian Speyer
+ * Get Piwik at http://www.piwik.org - Open source web analytics
+ *
+ * @category    design
+ * @package     base_default_template_piwikanalytics_piwik
+ * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ *
+ */
+?>
+<?php if (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
+<?php $siteId = Mage::getStoreConfig(Mage_PiwikAnalytics_Helper_Data::XML_PATH_SITE) ?>
+<?php $installPath = Mage::getStoreConfig(Mage_PiwikAnalytics_Helper_Data::XML_PATH_INSTALL) ?>
+
+<?php 
+
+if ($siteId) {
+	if (strpos($installPath, "https://") !== false) {
+		$secureinstallPath = $installPath;
+		$installPath = str_replace("https://", "http://", $installPath);
+	}
+	if (strpos($installPath, "http://") === false)
+		$installPath = "http://" . $installPath;
+
+	$secureinstallPath = str_replace("http://", "https://", $installPath);
+
+	$last = $installPath[strlen($installPath)-1];
+	
+	if ($last != "/") { 
+		$installPath .= "/";
+		$secureinstallPath .= "/";
+	}
+	?>
+
+<!-- PIWIK TRACKING CODE --> 
+<script type="text/javascript">
+//<![CDATA[
+
+var pkBaseURL = (("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <?php echo $siteId ?>);
+<?php echo $this->_getEcommerceCartUpdate()?>
+<?php echo $this->_getOrdersTrackingCode()?>
+<?php echo $this->_getProductPageview()?>
+<?php echo $this->_getCategoryPageview()?>
+<?php echo "\n";?>
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+//]]>
+</script>
+<noscript><p><img src="<?php echo $installPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+<!-- END PIWIK TRACKING CODE --> 
+		
+	<?php } ?>
+<?php endif; ?>
+
+

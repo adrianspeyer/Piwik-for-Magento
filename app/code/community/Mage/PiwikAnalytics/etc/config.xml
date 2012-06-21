@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * Piwik Extension for Magento created by Adrian Speyer
+ * Get Piwik at http://www.piwik.org - Open source web analytics
+ *
+ * @category    Mage
+ * @package     Mage_PiwikAnalytics_etc_config
+ * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ *
+ */
+-->
+<config>
+    <modules>
+        <Mage_PiwikAnalytics>
+            <version>1.7.0.0</version>
+        </Mage_PiwikAnalytics>
+    </modules>
+    <global>
+        <models>
+            <piwikanalytics>
+                <class>Mage_PiwikAnalytics_Model</class>
+            </piwikanalytics>
+        </models>
+        <blocks>
+            <piwikanalytics>
+                <class>Mage_PiwikAnalytics_Block</class>
+            </piwikanalytics>
+        </blocks>
+        <helpers>
+            <piwikanalytics>
+                <class>Mage_PiwikAnalytics_Helper</class>
+            </piwikanalytics>
+        </helpers>
+    </global>
+    <frontend>
+        <translate>
+            <modules>
+                <Mage_PiwikAnalytics>
+                    <files>
+                        <default>Mage_PiwikAnalytics.csv</default>
+                    </files>
+                </Mage_PiwikAnalytics>
+            </modules>
+        </translate>
+         <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <piwikanalytics_order_success>
+                        <class>piwikanalytics/observer</class>
+                        <method>setPiwikAnalyticsOnOrderSuccessPageView</method>
+                    </piwikanalytics_order_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <piwikanalytics_order_success>
+                        <class>piwikanalytics/observer</class>
+                        <method>setPiwikAnalyticsOnOrderSuccessPageView</method>
+                    </piwikanalytics_order_success>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+                    </events>
+        <layout>
+            <updates>
+                <piwikanalytics>
+                    <file>piwikanalytics.xml</file>
+                </piwikanalytics>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Mage_PiwikAnalytics>
+                    <files>
+                        <default>Mage_PiwikAnalytics.csv</default>
+                    </files>
+                </Mage_PiwikAnalytics>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>
