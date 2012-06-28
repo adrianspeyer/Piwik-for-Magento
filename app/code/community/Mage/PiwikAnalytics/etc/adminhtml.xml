@@ -32,4 +32,16 @@
             </admin>
         </resources>
     </acl>
-</config>
+           <menu>
+            <report>
+                <children>
+                            <admin2_adminhtml_piwikanalytics>
+                                <title>Piwik iFrame</title>
+								<sort_order>99999</sort_order>
+								<action>piwikanalytics/index/index</action>
+							<depends><config>piwik/analytics/active</config></depends>
+                            </admin2_adminhtml_piwikanalytics>
+                </children>
+            </report>
+		</menu>		
+    </config>

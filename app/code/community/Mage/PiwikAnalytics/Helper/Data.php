@@ -12,12 +12,7 @@
  */
 
 
-/**
- * PiwikAnalytics data helper
- *
- * @category   Mage
- * @package    Mage_PiwikAnalytics
- */
+
 class Mage_PiwikAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
@@ -26,6 +21,8 @@ class Mage_PiwikAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
     const XML_PATH_ACTIVE  = 'piwik/analytics/active';
     const XML_PATH_SITE =    'piwik/analytics/site';
 	const XML_PATH_INSTALL = 'piwik/analytics/install';
+	const XML_PATH_PWTOKEN = 'piwik/analytics/pwtoken';
+	
 	
     /**
      *

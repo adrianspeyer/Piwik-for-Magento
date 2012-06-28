@@ -82,4 +82,17 @@
             </modules>
         </translate>
     </adminhtml>
-</config>
+<admin>
+        <routers>
+            <Mage_PiwikAnalytics>
+                <use>admin</use>
+                <args>
+                    <module>Mage_PiwikAnalytics</module>
+                    <frontName>piwikanalytics</frontName>
+                </args>
+            </Mage_PiwikAnalytics>
+        </routers>
+</admin>
+	
+	
+	</config>

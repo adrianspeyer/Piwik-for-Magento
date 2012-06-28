@@ -1,32 +1,33 @@
 <?xml version="1.0"?>
 <package>
     <name>Piwik_Ecommerce</name>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
     <stability>stable</stability>
     <license uri="@license http://www.gnu.org/licenses/gpl-3.0.html">GPL v3</license>
     <channel>community</channel>
     <extends/>
     <summary>This is a GPL released Extension that allows you to get your Magento Ecommerce Transaction data in your Piwik install.</summary>
-    <description>Piwik is an amazing open source analytics program. Now with this extension you get the power of Magento and analytics to match. This Piwik Extension will give you the following right out of the box:&#xD;
+    <description>&lt;p&gt;Piwik is an amazing open source analytics program. Now with this extension you get the power of Magento and analytics to match. This Piwik Extension will give you the following right out of the box&lt;/p&gt;&#xD;
+&lt;p&gt;Tracking of :&lt;br /&gt;&#xD;
+  -impressions of products detail pages viewed&lt;br /&gt;&#xD;
+  -impressions of categories viewed&lt;/p&gt;&#xD;
+&lt;p&gt;Information from your Carts, including: &lt;br /&gt;&#xD;
+  -Product in carts&lt;br /&gt;&#xD;
+  -Items abandoned carts (lost revenue)&lt;/p&gt;&#xD;
+&lt;p&gt;Information on Orders:&lt;br /&gt;&#xD;
+  -All you would expect including revenue, subtotal, tax, shipping.&lt;br /&gt;&#xD;
+  - Conversion rates by sku,  category, and more&lt;/p&gt;&#xD;
 &#xD;
-Tracking of :&#xD;
--impressions of products detail pages viewed&#xD;
--impressions of categories viewed&#xD;
+Version 1.0.5 has added ability to use Piwik Iframe in your Magento install.&#xD;
 &#xD;
-Information from your Carts, including: &#xD;
--Product in carts&#xD;
--Items abandoned carts (lost revenue)&#xD;
-&#xD;
-Information on Orders:&#xD;
--All you would expect including revenue, subtotal, tax, shipping.&#xD;
-- Conversion rates by sku,  category, and more</description>
-    <notes>Allows for simple access to Ecommerce Data in your Piwik Install. Welcome ideas, and code improvement at:  http://code.google.com/p/piwik-magento/&#xD;
+&lt;p&gt;After install, make sure you clear your cache. Click &lt;strong&gt;&lt;a href="http://www.statstory.com/piwik-ecommerce-extension-for-magento/"&gt;here&lt;/a&gt;&lt;/strong&gt; for more details on how it works and how to install.&lt;/p&gt;</description>
+    <notes>Allows for simple access to Ecommerce Data in your Piwik Install. Welcome ideas, and code improvement at:  https://github.com/adriansonline/Piwik-for-Magento&#xD;
 &#xD;
 </notes>
     <authors><author><name>Adrian Speyer</name><user>AdrianSpeyer</user><email>adriansprojects@gmail.com</email></author></authors>
-    <date>2012-06-03</date>
-    <time>13:28:48</time>
-    <contents><target name="mage"><dir name="."><dir name="app"><dir name="code"><dir name="community"><dir name="Mage"><dir name="PiwikAnalytics"><dir name="Block"><file name="Piwik.php" hash="0eb5262459eed751ad1029d32953759f"/></dir><dir name="Helper"><file name="Data.php" hash="0ebbc380827b134878d4357127b5470e"/></dir><dir name="Model"><file name="Observer.php" hash="35d02dd4b55cc31d6b0e0b91811fa9aa"/></dir><dir name="etc"><file name="adminhtml.xml" hash="6f0375810fc7a218fb881118a298efe8"/><file name="config.xml" hash="8900b1d31d2924517d2e26d412684d1e"/><file name="system.xml" hash="07fedf7a982cfb258de7c1dff546d2ec"/></dir></dir></dir></dir></dir><dir name="design"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="piwikanalytics"><file name="piwik.phtml" hash="d3f2c3b7344fe55c465787d71af909d9"/></dir></dir><dir name="layout"><file name="piwikanalytics.xml" hash="0ecc6b445f0457ccec40259fee63c348"/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="piwikanalytics.xml" hash="5fd829980f2dcfd818971842a99606c6"/></dir></dir><dir name="locale"><dir name="en_US"><file name="Mage_PiwikAnalytics.csv" hash="81f396756f8f7f7249c465da55b58052"/></dir></dir></dir></dir></target></contents>
+    <date>2012-06-28</date>
+    <time>00:55:38</time>
+    <contents><target name="mage"><dir name="."><dir name="app"><dir name="code"><dir name="community"><dir name="Mage"><dir name="PiwikAnalytics"><dir name="Block"><file name="Piwik.php" hash="3e242d76211c2329935f77c8c5c9669f"/></dir><dir name="Helper"><file name="Data.php" hash="652a0bb28db2540bd9ff0a5d933aabb5"/></dir><dir name="Model"><file name="Observer.php" hash="35d02dd4b55cc31d6b0e0b91811fa9aa"/></dir><dir name="controllers"><file name="IndexController.php" hash="eeb0eac61fc69189bb338c83b207cbc2"/></dir><dir name="etc"><file name="adminhtml.xml" hash="64c535ed6bb2b1c4c710639d55fa984c"/><file name="config.xml" hash="58c8f3a8b32bf23c370adc8227bd5dbd"/><file name="system.xml" hash="c541d79a21222ec70745c1cd40e9a144"/></dir></dir></dir></dir></dir><dir name="design"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="piwikanalytics"><file name="piwik.phtml" hash="d3f2c3b7344fe55c465787d71af909d9"/></dir></dir><dir name="layout"><file name="piwikanalytics.xml" hash="0ecc6b445f0457ccec40259fee63c348"/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="piwikanalytics.xml" hash="5fd829980f2dcfd818971842a99606c6"/></dir></dir><dir name="locale"><dir name="en_US"><file name="Mage_PiwikAnalytics.csv" hash="81f396756f8f7f7249c465da55b58052"/></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

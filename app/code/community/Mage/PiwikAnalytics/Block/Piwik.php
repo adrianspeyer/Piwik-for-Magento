@@ -110,12 +110,13 @@ class Mage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
     $category_id = $cats[0]; // just grab the first id
     $category = Mage::getModel('catalog/category')->load($category_id);
     $category_name = $category->getName();
-
+	$nameofproduct = $cartitem->getName();
+	$nameofproduct = str_replace('"', "", $nameofproduct);
 	
 	if ($cartitem->getPrice() == 0 || $cartitem->getPrice() < 0.00001):
     continue;
   endif;
-    echo 'piwikTracker.addEcommerceItem("'.$cartitem->getSku().'","'.$cartitem->getName().'","'.$category_name.'",'.$cartitem->getPrice().','.$cartitem->getQty().');';
+    echo 'piwikTracker.addEcommerceItem("'.$cartitem->getSku().'","'.$nameofproduct.'","'.$category_name.'",'.$cartitem->getPrice().','.$cartitem->getQty().');';
 	echo "\n";
 	}
 	
@@ -147,9 +148,11 @@ class Mage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
     $category_id = $cats[0]; // just grab the first id
     $category = Mage::getModel('catalog/category')->load($category_id);
     $category_name = $category->getName();
-
+	$product = $currentproduct->getName();
+	$product = str_replace('"', "", $product);
 	
-echo 'piwikTracker.setEcommerceView("'.$currentproduct->getSku().'", "'.$currentproduct->getName().'","'.$category_name.'",'.$currentproduct->getPrice().');';
+	
+echo 'piwikTracker.setEcommerceView("'.$currentproduct->getSku().'", "'.$product.'","'.$category_name.'",'.$currentproduct->getPrice().');';
 	Mage::unregister('current_category');
 	}	
 	
