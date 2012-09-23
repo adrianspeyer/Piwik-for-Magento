@@ -107,7 +107,7 @@ class Mage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
 	$product_id = $cartitem->product_id;
     $_product = Mage::getModel('catalog/product')->load($product_id);
     $cats = $_product->getCategoryIds();
-    $category_id = $cats[0]; // just grab the first id
+    if (isset($cats)){$category_id = $cats[0];} // just grab the first id
     $category = Mage::getModel('catalog/category')->load($category_id);
     $category_name = $category->getName();
 	$nameofproduct = $cartitem->getName();

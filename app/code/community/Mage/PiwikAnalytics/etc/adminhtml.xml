@@ -13,7 +13,22 @@
  */
 -->
 <config>
-    <acl>
+	    <menu>
+        <report translate="title" module="reports">
+            <title>Reports</title>
+            <sort_order>80</sort_order>
+            <children>                                             
+                <iframe_piwik translate="title" module="reports">
+					<title>Piwik iFrame</title>
+								<sort_order>99999</sort_order>
+								<action>piwikanalytics/index/index</action>
+							<depends><config>piwik/analytics/active</config></depends>
+                </iframe_piwik>
+            </children>
+        </report>
+    </menu>
+
+	<acl>
         <resources>
             <admin>
                 <children>
@@ -23,6 +38,7 @@
                                 <children>
                                     <piwik translate="title" module="piwikanalytics">
                                         <title>Piwik Analytics</title>
+									
                                     </piwik>
                                 </children>
                             </config>
@@ -32,16 +48,32 @@
             </admin>
         </resources>
     </acl>
-           <menu>
-            <report>
+	   <acl>
+        <resources>
+            <admin>
                 <children>
-                            <admin2_adminhtml_piwikanalytics>
-                                <title>Piwik iFrame</title>
-								<sort_order>99999</sort_order>
-								<action>piwikanalytics/index/index</action>
-							<depends><config>piwik/analytics/active</config></depends>
-                            </admin2_adminhtml_piwikanalytics>
+                    <report translate="title" module="reports">
+                        <title>Reports</title>
+                        <sort_order>80</sort_order>
+                        <children>
+                            <iframe_piwik translate="title">
+                                <title>Piwik Iframe</title>
+                            </iframe_piwik>
+                        </children>
+                    </report>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <reports translate="title" module="reports">
+                                        <title>Reports</title>
+                                    </reports>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
-            </report>
-		</menu>		
-    </config>
+            </admin>
+        </resources>
+    </acl>
+</config>

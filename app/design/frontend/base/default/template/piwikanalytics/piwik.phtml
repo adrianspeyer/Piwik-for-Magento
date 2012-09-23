@@ -35,6 +35,15 @@ if ($siteId) {
 	}
 	?>
 
+<?php
+//0 Search Results
+if($this->getRequest()->getControllerName()=='result')
+{
+$nores = Mage::helper('catalogsearch')->getEngine()->getResultCollection()->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())->getSize();
+}?>
+	
+	
+
 <!-- PIWIK TRACKING CODE --> 
 <script type="text/javascript">
 //<![CDATA[
@@ -48,6 +57,11 @@ var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <?php echo $siteId 
 <?php echo $this->_getOrdersTrackingCode()?>
 <?php echo $this->_getProductPageview()?>
 <?php echo $this->_getCategoryPageview()?>
+<?php if (isset($nores)) 
+{?>
+var searchCount = <? echo $nores?>;
+piwikTracker.setCustomUrl(document.URL + '&search_count=' + searchCount);
+<?php }?>
 <?php echo "\n";?>
 piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
