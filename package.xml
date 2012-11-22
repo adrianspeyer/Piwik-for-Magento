@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Piwik_Ecommerce</name>
-    <version>1.0.8</version>
+    <version>1.1.0</version>
     <stability>stable</stability>
     <license uri="@license http://www.gnu.org/licenses/gpl-3.0.html">GPL v3</license>
     <channel>community</channel>
@@ -20,6 +20,10 @@
 &#xD;
 Version 1.0.8 Adds support for Piwik  "No Search" results&#xD;
 &#xD;
+Version 1.0.9  Small bug fixes&#xD;
+&#xD;
+Version 1.1.0  Ads support for 404 tracking&#xD;
+&#xD;
 **You can use permissions to give any role&#xD;
 access to the Piwik iframe***&#xD;
 &#xD;
@@ -30,9 +34,9 @@ Source code Available at:  https://github.com/adriansonline/Piwik-for-Magento&#x
 &#xD;
 </notes>
     <authors><author><name>Adrian Speyer</name><user>AdrianSpeyer</user><email>adriansprojects@gmail.com</email></author></authors>
-    <date>2012-10-23</date>
-    <time>23:21:41</time>
-    <contents><target name="mage"><dir name="."><dir name="app"><dir name="code"><dir name="community"><dir name="Mage"><dir name="PiwikAnalytics"><dir name="Block"><file name="Piwik.php" hash="3e242d76211c2329935f77c8c5c9669f"/></dir><dir name="Helper"><file name="Data.php" hash="652a0bb28db2540bd9ff0a5d933aabb5"/></dir><dir name="Model"><file name="Observer.php" hash="35d02dd4b55cc31d6b0e0b91811fa9aa"/></dir><dir name="controllers"><file name="IndexController.php" hash="eeb0eac61fc69189bb338c83b207cbc2"/></dir><dir name="etc"><file name="adminhtml.xml" hash="f0b97990e63703f600c07b0db2a8eb39"/><file name="config.xml" hash="58c8f3a8b32bf23c370adc8227bd5dbd"/><file name="system.xml" hash="c541d79a21222ec70745c1cd40e9a144"/></dir></dir></dir></dir></dir><dir name="design"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="piwikanalytics"><file name="piwik.phtml" hash="f304800777fdcb0822a0b4cc391d8077"/></dir></dir><dir name="layout"><file name="piwikanalytics.xml" hash="0ecc6b445f0457ccec40259fee63c348"/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="piwikanalytics.xml" hash="5fd829980f2dcfd818971842a99606c6"/></dir></dir><dir name="locale"><dir name="en_US"><file name="Mage_PiwikAnalytics.csv" hash="81f396756f8f7f7249c465da55b58052"/></dir></dir></dir></dir></target></contents>
+    <date>2012-11-22</date>
+    <time>00:43:08</time>
+    <contents><target name="mage"><dir name="."><dir name="app"><dir name="code"><dir name="community"><dir name="Mage"><dir name="PiwikAnalytics"><dir name="Block"><file name="Piwik.php" hash="e16a55e9e40d92fe635c6c86068310be"/></dir><dir name="Helper"><file name="Data.php" hash="652a0bb28db2540bd9ff0a5d933aabb5"/></dir><dir name="Model"><file name="Observer.php" hash="35d02dd4b55cc31d6b0e0b91811fa9aa"/></dir><dir name="controllers"><file name="IndexController.php" hash="eeb0eac61fc69189bb338c83b207cbc2"/></dir><dir name="etc"><file name="adminhtml.xml" hash="f0b97990e63703f600c07b0db2a8eb39"/><file name="config.xml" hash="58c8f3a8b32bf23c370adc8227bd5dbd"/><file name="system.xml" hash="c541d79a21222ec70745c1cd40e9a144"/></dir></dir></dir></dir></dir><dir name="design"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="piwikanalytics"><file name="piwik.phtml" hash="c6aade1768d81296421921ac8596b5c1"/></dir></dir><dir name="layout"><file name="piwikanalytics.xml" hash="0ecc6b445f0457ccec40259fee63c348"/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="piwikanalytics.xml" hash="5fd829980f2dcfd818971842a99606c6"/></dir></dir><dir name="locale"><dir name="en_US"><file name="Mage_PiwikAnalytics.csv" hash="81f396756f8f7f7249c465da55b58052"/></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

@@ -62,6 +62,7 @@ var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <?php echo $siteId 
 var searchCount = <? echo $nores?>;
 piwikTracker.setCustomUrl(document.URL + '&search_count=' + searchCount);
 <?php }?>
+if (document.title.search(/404 Not Found/i) !== -1) { piwikTracker.setDocumentTitle('404/URL = '+String(document.location.pathname+document.location.search).replace(/\//g,"%2f") + '/From = ' + String(document.referrer).replace(/\//g,"%2f"));}; 
 <?php echo "\n";?>
 piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
