@@ -1,0 +1,6 @@
+app/code/community/Mage/PiwikAnalytics/ app/code/community/Mage/PiwikAnalytics/
+app/design/frontend/base/default/layout/piwikanalytics.xml app/design/frontend/base/default/layout/piwikanalytics.xml
+app/design/frontend/base/default/template/piwikanalytics/ app/design/frontend/base/default/template/piwikanalytics/
+app/etc/modules/piwikanalytics.xml app/etc/modules/piwikanalytics.xml
+app/locale/en_US/Mage_PiwikAnalytics.csv app/locale/en_US/Mage_PiwikAnalytics.csv
+
