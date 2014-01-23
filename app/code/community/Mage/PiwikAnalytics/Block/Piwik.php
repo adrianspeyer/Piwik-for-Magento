@@ -141,11 +141,16 @@ class Mage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
 	if (!($currentproduct instanceof Mage_Catalog_Model_Product)) {
             return;
         }
+
+
+
+
 	
-	$product_id = $currentproduct->getId();
+    $product_id = $currentproduct->getId();
     $_product = Mage::getModel('catalog/product')->load($product_id);
     $cats = $_product->getCategoryIds();
     $category_id = $cats[0]; // just grab the first id
+    //$category_id = if (isset($cats[0]) {$category_id = $cats[0]} else $category_id = null; potential fix when no catgeories
     $category = Mage::getModel('catalog/category')->load($category_id);
     $category_name = $category->getName();
 	$product = $currentproduct->getName();
