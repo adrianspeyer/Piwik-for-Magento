@@ -5,8 +5,8 @@
  * Piwik Extension for Magento created by Adrian Speyer
  * Get Piwik at http://www.piwik.org - Open source web analytics
  *
- * @category    Mage
- * @package     Mage_PiwikAnalytics_etc_config
+ * @category    PiwikMage
+ * @package     PiwikMage_PiwikAnalytics
  * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
@@ -14,38 +14,38 @@
 -->
 <config>
     <modules>
-        <Mage_PiwikAnalytics>
+        <PiwikMage_PiwikAnalytics>
             <version>1.7.0.0</version>
-        </Mage_PiwikAnalytics>
+        </PiwikMage_PiwikAnalytics>
     </modules>
     <global>
         <models>
             <piwikanalytics>
-                <class>Mage_PiwikAnalytics_Model</class>
+                <class>PiwikMage_PiwikAnalytics_Model</class>
             </piwikanalytics>
         </models>
         <blocks>
             <piwikanalytics>
-                <class>Mage_PiwikAnalytics_Block</class>
+                <class>PiwikMage_PiwikAnalytics_Block</class>
             </piwikanalytics>
         </blocks>
         <helpers>
             <piwikanalytics>
-                <class>Mage_PiwikAnalytics_Helper</class>
+                <class>PiwikMage_PiwikAnalytics_Helper</class>
             </piwikanalytics>
         </helpers>
     </global>
     <frontend>
         <translate>
             <modules>
-                <Mage_PiwikAnalytics>
+                <PiwikMage_PiwikAnalytics>
                     <files>
-                        <default>Mage_PiwikAnalytics.csv</default>
+                        <default>PiwikMage_PiwikAnalytics.csv</default>
                     </files>
-                </Mage_PiwikAnalytics>
+                </PiwikMage_PiwikAnalytics>
             </modules>
         </translate>
-         <events>
+        <events>
             <checkout_onepage_controller_success_action>
                 <observers>
                     <piwikanalytics_order_success>
@@ -62,7 +62,7 @@
                     </piwikanalytics_order_success>
                 </observers>
             </checkout_multishipping_controller_success_action>
-                    </events>
+        </events>
         <layout>
             <updates>
                 <piwikanalytics>
@@ -74,25 +74,23 @@
     <adminhtml>
         <translate>
             <modules>
-                <Mage_PiwikAnalytics>
+                <PiwikMage_PiwikAnalytics>
                     <files>
-                        <default>Mage_PiwikAnalytics.csv</default>
+                        <default>PiwikMage_PiwikAnalytics.csv</default>
                     </files>
-                </Mage_PiwikAnalytics>
+                </PiwikMage_PiwikAnalytics>
             </modules>
         </translate>
     </adminhtml>
-<admin>
+    <admin>
         <routers>
-            <Mage_PiwikAnalytics>
+            <PiwikMage_PiwikAnalytics>
                 <use>admin</use>
                 <args>
-                    <module>Mage_PiwikAnalytics</module>
+                    <module>PiwikMage_PiwikAnalytics</module>
                     <frontName>piwikanalytics</frontName>
                 </args>
-            </Mage_PiwikAnalytics>
+            </PiwikMage_PiwikAnalytics>
         </routers>
-</admin>
-	
-	
-	</config>
+    </admin>
+</config>

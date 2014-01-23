@@ -4,8 +4,8 @@
  * Piwik Extension for Magento created by Adrian Speyer
  * Get Piwik at http://www.piwik.org - Open source web analytics
  *
- * @category    Mage
- * @package     Mage_PiwikAnalytics_Model_Observer
+ * @category    PiwikMage
+ * @package     PiwikMage_PiwikAnalytics
  * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
@@ -15,10 +15,10 @@
 /**
  * Piwik module observer
  *
- * @category   Mage
- * @package    Mage_Piwik
+ * @category   PiwikMage
+ * @package    PiwikMage_PiwikAnalytics
  */
-class Mage_PiwikAnalytics_Model_Observer
+class PiwikMage_PiwikAnalytics_Model_Observer
 {
    
 

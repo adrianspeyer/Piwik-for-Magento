@@ -13,7 +13,7 @@
 
 
 
-class Mage_PiwikAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
+class PiwikMage_PiwikAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
      * Config paths for using throughout the code

@@ -15,12 +15,12 @@
 
 <config>
     <modules>
-  <Mage_PiwikAnalytics>
+        <PiwikMage_PiwikAnalytics>
             <active>true</active>
             <codePool>community</codePool>
             <depends>
                 <Mage_Core/>
             </depends>
-	</Mage_PiwikAnalytics>
-	</modules>
+        </PiwikMage_PiwikAnalytics>
+    </modules>
 </config>

@@ -5,8 +5,8 @@
  * Piwik Extension for Magento created by Adrian Speyer
  * Get Piwik at http://www.piwik.org - Open source web analytics
  *
- * @category    Mage
- * @package     Mage_PiwikAnalytics_System
+ * @category    PiwikMage
+ * @package     PiwikMage_PiwikAnalytics
  * @copyright   Copyright (c) 2012 Adrian Speyer. (http://www.adrianspeyer.com)
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
@@ -40,10 +40,10 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </active>
-                       
-						<install translate="label">
+
+                        <install translate="label">
                             <label>Install Path</label>
-							<comment>i.e. http://www.example.com/piwik/</comment>
+                            <comment>i.e. http://www.example.com/piwik/</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -52,30 +52,30 @@
                         </install>
 
 
-					   <site translate="label">
+                        <site translate="label">
                             <label>Site Id</label>
-							<comment>Default is 1</comment>
+                            <comment>Default is 1</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </site>
-						
-						
-						   <pwtoken translate="label">
+
+
+                        <pwtoken translate="label">
                             <label>Piwik Auth Token</label>
-							<comment>Find in your API Tab of Piwik Install</comment>
+                            <comment>Find in your API Tab of Piwik Install</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-							</pwtoken>
-						
-						
+                        </pwtoken>
+
+
                     </fields>
-              </analytics>
+                </analytics>
             </groups>
         </piwik>
     </sections>

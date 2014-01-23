@@ -1,6 +1,6 @@
-app/code/community/Mage/PiwikAnalytics/ app/code/community/Mage/PiwikAnalytics/
+app/code/community/PiwikMage/PiwikAnalytics/ app/code/community/PiwikMage/PiwikAnalytics/
 app/design/frontend/base/default/layout/piwikanalytics.xml app/design/frontend/base/default/layout/piwikanalytics.xml
 app/design/frontend/base/default/template/piwikanalytics/ app/design/frontend/base/default/template/piwikanalytics/
-app/etc/modules/Mage_PiwikAnalytics.xml app/etc/modules/Mage_PiwikAnalytics.xml
-app/locale/en_US/Mage_PiwikAnalytics.csv app/locale/en_US/Mage_PiwikAnalytics.csv
-app/locale/de_DE/Mage_PiwikAnalytics.csv app/locale/de_DE/Mage_PiwikAnalytics.csv
+app/etc/modules/PiwikMage_PiwikAnalytics.xml app/etc/modules/PiwikMage_PiwikAnalytics.xml
+app/locale/en_US/PiwikMage_PiwikAnalytics.csv app/locale/en_US/PiwikMage_PiwikAnalytics.csv
+app/locale/de_DE/PiwikMage_PiwikAnalytics.csv app/locale/de_DE/PiwikMage_PiwikAnalytics.csv
