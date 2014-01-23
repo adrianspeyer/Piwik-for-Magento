@@ -45,7 +45,7 @@
                 </PiwikMage_PiwikAnalytics>
             </modules>
         </translate>
-         <events>
+        <events>
             <checkout_onepage_controller_success_action>
                 <observers>
                     <piwikanalytics_order_success>
@@ -62,7 +62,7 @@
                     </piwikanalytics_order_success>
                 </observers>
             </checkout_multishipping_controller_success_action>
-                    </events>
+        </events>
         <layout>
             <updates>
                 <piwikanalytics>
@@ -82,7 +82,7 @@
             </modules>
         </translate>
     </adminhtml>
-<admin>
+    <admin>
         <routers>
             <PiwikMage_PiwikAnalytics>
                 <use>admin</use>
@@ -92,7 +92,5 @@
                 </args>
             </PiwikMage_PiwikAnalytics>
         </routers>
-</admin>
-	
-	
-	</config>
+    </admin>
+</config>
