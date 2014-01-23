@@ -13,7 +13,7 @@
  *
  */
  
-class Mage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
+class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
 {
  	
 	    /**
@@ -168,8 +168,8 @@ protected function _getCategoryPageview()
 	if (!($currentcategory instanceof Mage_Catalog_Model_Category)) {
             return;
         }
-echo 'piwikTracker.setEcommerceView(false,false,"'.$currentcategory->getName().'");';
-Mage::unregister('current_product');	
+    echo 'piwikTracker.setEcommerceView(false,false,"'.$currentcategory->getName().'");';
+    Mage::unregister('current_product');
 	}		
 			
 	

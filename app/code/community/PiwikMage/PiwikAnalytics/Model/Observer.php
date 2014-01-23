@@ -18,7 +18,7 @@
  * @category   Mage
  * @package    Mage_Piwik
  */
-class Mage_PiwikAnalytics_Model_Observer
+class PiwikMage_PiwikAnalytics_Model_Observer
 {
    
 
