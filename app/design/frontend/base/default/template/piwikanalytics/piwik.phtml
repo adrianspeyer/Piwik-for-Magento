@@ -32,24 +32,20 @@ if ($siteId) {
 	if ($last != "/") { 
 		$installPath .= "/";
 		$secureinstallPath .= "/";
-	}
-	?>
+}
 
-<?php
-//0 Search Results
-if($this->getRequest()->getControllerName()=='result')
-{
-$nores = Mage::helper('catalogsearch')->getEngine()->getResultCollection()->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())->getSize();
-}?>
-	
-	
+// 0 Search Results
+if($this->getRequest()->getControllerName()=='result') {
+	$nores = Mage::helper('catalogsearch')->getEngine()->getResultCollection()->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())->getSize();
+}
+?>
 
 <!-- PIWIK TRACKING CODE --> 
 <script type="text/javascript">
 //<![CDATA[
 
 var pkBaseURL = (("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+document.write(decodeURI("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 </script><script type="text/javascript">
 try {
 var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <?php echo $siteId ?>);
@@ -81,5 +77,3 @@ piwikTracker.enableLinkTracking();
 		
 	<?php } ?>
 <?php endif; ?>
-
-
