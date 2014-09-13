@@ -58,7 +58,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
                 } else {
                     $qty = '0';
                 }
-                $result[] = sprintf("piwikTracker.addEcommerceItem( '%s', '%s', '%s', %s, %s);",
+                $result[] = sprintf("_paq.push(['addEcommerceItem', '%s', '%s', '%s', %s, %s]);",
                     $this->jsQuoteEscape($item->getSku()),
                     $this->jsQuoteEscape($item->getName()),
                     $category_name,
@@ -73,7 +73,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
                 } else {
                     $subtotal = '0.00';
                 }
-                $result[] = sprintf("piwikTracker.trackEcommerceOrder( '%s', %s, %s, %s, %s);",
+                $result[] = sprintf("_paq.push(['trackEcommerceOrder' , '%s', %s, %s, %s, %s]);",
                     $order->getIncrementId(),
                     $order->getBaseGrandTotal(),
                     $subtotal,
@@ -113,15 +113,17 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
             if ($cartitem->getPrice() == 0 || $cartitem->getPrice() < 0.00001):
                 continue;
             endif;
-            echo 'piwikTracker.addEcommerceItem("' . $cartitem->getSku() . '","' . $nameofproduct . '","' . $category_name . '",' . $cartitem->getPrice() . ',' . $cartitem->getQty() . ');';
+
+            echo "_paq.push(['addEcommerceItem', '" . $cartitem->getSku() . "', '" . $nameofproduct . "', '" . $category_name . "', " . $cartitem->getPrice() . ", " . $cartitem->getQty() . "]);";
             echo "\n";
         }
 
         //total in cart
         $grandTotal = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal();
-        if ($grandTotal == 0) echo ''; else
-            echo 'piwikTracker.trackEcommerceCartUpdate(' . $grandTotal . ');';
-        echo "\n";
+        if ($grandTotal != 0) {
+            echo "_paq.push(['trackEcommerceCartUpdate', " . $grandTotal . "]);";
+            echo "\n";
+        }
     }
 
     /**
@@ -148,8 +150,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
         $product = $currentproduct->getName();
         $product = str_replace('"', "", $product);
 
-
-        echo 'piwikTracker.setEcommerceView("' . $currentproduct->getSku() . '", "' . $product . '","' . $category_name . '",' . $currentproduct->getPrice() . ');';
+        echo "_paq.push(['setEcommerceView', '" . $currentproduct->getSku() . "', '" . $product . "', '" . $category_name . "', " . $currentproduct->getPrice() . " ]);";
         Mage::unregister('current_category');
     }
 
@@ -164,7 +165,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
         if (!($currentcategory instanceof Mage_Catalog_Model_Category)) {
             return;
         }
-        echo 'piwikTracker.setEcommerceView(false,false,"' . $currentcategory->getName() . '");';
+        echo "_paq.push(['setEcommerceView', false, false', " . $currentcategory->getName() . "]);";
         Mage::unregister('current_product');
     }
 

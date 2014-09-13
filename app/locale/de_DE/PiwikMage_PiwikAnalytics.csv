@@ -3,3 +3,6 @@
 "Enable","Aktivieren"
 "Piwik Analytics Control","Piwik Analytics Control"
 "Piwik Analytics","Piwik Analytics"
+"Find in your API Tab of Piwik Install", "Den Piwik Auth Token finden Sie in Ihrer Piwik Installtion im Tab 'API'"
+"Default is 1","Die Standard Seiten-ID ist '1'"
+"i.e. http://www.example.com/piwik/","Beispiel: http://www.example.com/piwik/"

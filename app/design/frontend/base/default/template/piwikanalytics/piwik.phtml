@@ -12,74 +12,69 @@
  */
 ?>
 <?php if (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
-<?php $siteId = Mage::getStoreConfig(PiwikMage_PiwikAnalytics_Helper_Data::XML_PATH_SITE) ?>
-<?php $installPath = Mage::getStoreConfig(PiwikMage_PiwikAnalytics_Helper_Data::XML_PATH_INSTALL) ?>
+    <?php $siteId = Mage::getStoreConfig(PiwikMage_PiwikAnalytics_Helper_Data::XML_PATH_SITE) ?>
+    <?php $installPath = Mage::getStoreConfig(PiwikMage_PiwikAnalytics_Helper_Data::XML_PATH_INSTALL) ?>
 
-<?php 
+    <?php
 
-if ($siteId) {
-	if (strpos($installPath, "https://") !== false) {
-		$secureinstallPath = $installPath;
-		$installPath = str_replace("https://", "http://", $installPath);
-	}
-	if (strpos($installPath, "http://") === false)
-		$installPath = "http://" . $installPath;
+    if ($siteId) {
+        if (strpos($installPath, "https://") !== false) {
+            $secureinstallPath = $installPath;
+            $installPath = str_replace("https://", "http://", $installPath);
+        }
+        if (strpos($installPath, "http://") === false)
+            $installPath = "http://" . $installPath;
 
-	$secureinstallPath = str_replace("http://", "https://", $installPath);
+        $secureinstallPath = str_replace("http://", "https://", $installPath);
 
-	$last = $installPath[strlen($installPath)-1];
-	
-	if ($last != "/") { 
-		$installPath .= "/";
-		$secureinstallPath .= "/";
-	}
-	?>
+        $last = $installPath[strlen($installPath)-1];
 
-<?php
-//0 Search Results
-if($this->getRequest()->getControllerName()=='result')
-{
-$nores = Mage::helper('catalogsearch')->getEngine()->getResultCollection()->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())->getSize();
-}?>
-	
-	
+        if ($last != "/") {
+            $installPath .= "/";
+            $secureinstallPath .= "/";
+        }
 
-<!-- PIWIK TRACKING CODE --> 
-<script type="text/javascript">
-//<![CDATA[
+        // 0 Search Results
+        if($this->getRequest()->getControllerName()=='result') {
+            $nores = Mage::helper('catalogsearch')->getEngine()
+                                                  ->getResultCollection()
+                                                  ->addSearchFilter(Mage::helper('catalogsearch')
+                                                  ->getQuery()
+                                                  ->getQueryText())
+                                                  ->getSize();
+        }
+        ?>
 
-var pkBaseURL = (("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <?php echo $siteId ?>);
-<?php echo $this->_getEcommerceCartUpdate()?>
-<?php echo $this->_getOrdersTrackingCode()?>
-<?php echo $this->_getProductPageview()?>
-<?php echo $this->_getCategoryPageview()?>
-<?php if (isset($nores)) 
-{?>
-var searchCount = <? echo $nores?>;
-piwikTracker.setCustomUrl(document.URL + '&search_count=' + searchCount);
-<?php }?>
+        <!-- START PIWIK TRACKING CODE -->
+        <script type="text/javascript">
+            //<![CDATA[
+            var _paq = _paq || [];
+            (function(){ var u=(("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
+                _paq.push(['setSiteId', <?php echo $siteId ?>]);
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                <?php echo $this->_getEcommerceCartUpdate()?>
+                <?php echo $this->_getOrdersTrackingCode()?>
+                <?php echo $this->_getProductPageview()?>
+                <?php echo $this->_getCategoryPageview()?>
 
-<?php
-//404 tracking
-$action = Mage::app()->getRequest()->getActionName();
-if($action == 'noRoute'){?>
-piwikTracker.setDocumentTitle('404/URL = '+String(document.location.pathname+document.location.search).replace(/\//g,"%2f") + '/From = ' + String(document.referrer).replace(/\//g,"%2f"));
-<?php }?>
+                <?php if (isset($nores)): ?>
+                _paq.push(['setCustomUrl', '' + document.URL + '&search_count=<?php echo $nores ?>']);
+                <?php endif ?>
 
-<?php echo "\n";?>
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-//]]>
-</script>
-<noscript><p><img src="<?php echo $installPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
-<!-- END PIWIK TRACKING CODE --> 
-		
-	<?php } ?>
+                <?php
+                //404 tracking
+                $action = Mage::app()->getRequest()->getActionName();
+                if($action == 'noRoute'){?>
+                _paq.push(['setDocumentTitle', '404/URL = '+String(document.location.pathname+document.location.search).replace(/\//g,"%2f") + '/From = ' + String(document.referrer).replace(/\//g,"%2f")]);
+                <?php }?>
+
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
+                s.parentNode.insertBefore(g,s); })();
+        </script>
+        <noscript><p><img src="<?php echo $installPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+        <!-- END PIWIK TRACKING CODE -->
+
+    <?php } ?>
 <?php endif; ?>
-
-
