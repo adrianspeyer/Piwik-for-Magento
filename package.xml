@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Piwik_Ecommerce</name>
-    <version>1.1.1</version>
+    <version>1.1.3</version>
     <stability>stable</stability>
     <license uri="@license http://www.gnu.org/licenses/gpl-3.0.html">GPL v3</license>
     <channel>community</channel>
@@ -25,6 +25,10 @@ Version 1.0.9  Small bug fixes&#xD;
 Version 1.1.0  Adds support for 404 tracking&#xD;
 &#xD;
 Version 1.1.1  Adds support for 404 tracking via noroute&#xD;
+&#xD;
+Version 1.1.2  thanks to Chris and Sprankhub for various commits, code improvements and German Locale&#xD;
+&#xD;
+Version 1.1.3  Now using Piwik Async code thnaks to commite from codedge&#xD;
 &#xD;
 **You can use permissions to give any role&#xD;
 access to the Piwik iframe***&#xD;
