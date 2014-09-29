@@ -114,7 +114,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
                 continue;
             endif;
 
-            echo "_paq.push(['addEcommerceItem', '" . $cartItem->getSku() . "', " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $cartItem->getPrice() . ", " . $cartItem->getQty() . "]);";
+            echo "_paq.push(['addEcommerceItem', " . json_encode($cartItem->getSku()) . ", " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $cartItem->getPrice() . ", " . $cartItem->getQty() . "]);";
             echo "\n";
         }
 
@@ -150,7 +150,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
         $categoryName = $category->getName();
         $productName = $currentProduct->getName();
 
-        echo "_paq.push(['setEcommerceView', '" . $currentProduct->getSku() . "', " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $currentProduct->getPrice() . " ]);";
+        echo "_paq.push(['setEcommerceView', " . json_encode($currentProduct->getSku()) . ", " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $currentProduct->getPrice() . " ]);";
         Mage::unregister('current_category');
     }
 
