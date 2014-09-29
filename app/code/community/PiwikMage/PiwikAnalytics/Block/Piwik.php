@@ -161,12 +161,12 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
      */
     protected function _getCategoryPageview()
     {
-        $currentcategory = Mage::registry('current_category');
+        $currentCategory = Mage::registry('current_category');
 
-        if (!($currentcategory instanceof Mage_Catalog_Model_Category)) {
+        if (!($currentCategory instanceof Mage_Catalog_Model_Category)) {
             return;
         }
-        echo "_paq.push(['setEcommerceView', false, false', " . $currentcategory->getName() . "]);";
+        echo "_paq.push(['setEcommerceView', false, false, '" . $currentCategory->getName() . "']);";
         Mage::unregister('current_product');
     }
 
