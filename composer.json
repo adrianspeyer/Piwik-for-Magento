@@ -1,0 +1,12 @@
+{
+    "name": "piwik-mage/piwik-analytics",
+    "type": "magento-module",
+    "license":"GPLv3",
+    "description":"This is a GPL released Extension that allows you to get your Magento Ecommerce Transaction data in your Piwik install.",
+    "authors":[
+        {
+            "name":"Adrian Speyer",
+            "email":"adriansprojects@gmail.com"
+        }
+    ]
+}
