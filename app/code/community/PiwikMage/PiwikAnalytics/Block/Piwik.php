@@ -96,25 +96,25 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
 
         $cart = Mage::getModel('checkout/cart')->getQuote()->getAllVisibleItems();
 
-        foreach ($cart as $cartitem) {
+        foreach ($cart as $cartItem) {
 
             //get category name
-            $product_id = $cartitem->product_id;
-            $_product = Mage::getModel('catalog/product')->load($product_id);
-            $cats = $_product->getCategoryIds();
+            $productId = $cartItem->product_id;
+            $product = Mage::getModel('catalog/product')->load($productId);
+            $cats = $product->getCategoryIds();
             if (isset($cats)) {
-                $category_id = $cats[0];
+                $categoryId = $cats[0];
             } // just grab the first id
-            $category = Mage::getModel('catalog/category')->load($category_id);
-            $category_name = $category->getName();
-            $nameofproduct = $cartitem->getName();
-            $nameofproduct = str_replace('"', "", $nameofproduct);
+            $category = Mage::getModel('catalog/category')->load($categoryId);
+            $categoryName = $category->getName();
+            $productName = $cartItem->getName();
+            $productName = str_replace('"', "", $productName);
 
-            if ($cartitem->getPrice() == 0 || $cartitem->getPrice() < 0.00001):
+            if ($cartItem->getPrice() == 0 || $cartItem->getPrice() < 0.00001):
                 continue;
             endif;
 
-            echo "_paq.push(['addEcommerceItem', '" . $cartitem->getSku() . "', '" . $nameofproduct . "', '" . $category_name . "', " . $cartitem->getPrice() . ", " . $cartitem->getQty() . "]);";
+            echo "_paq.push(['addEcommerceItem', '" . $cartItem->getSku() . "', " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $cartItem->getPrice() . ", " . $cartItem->getQty() . "]);";
             echo "\n";
         }
 
@@ -133,25 +133,24 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
     protected function _getProductPageview()
     {
 
-        $currentproduct = Mage::registry('current_product');
+        $currentProduct = Mage::registry('current_product');
 
-        if (!($currentproduct instanceof Mage_Catalog_Model_Product)) {
+        if (!($currentProduct instanceof Mage_Catalog_Model_Product)) {
             return;
         }
 
 
-        $product_id = $currentproduct->getId();
-        $_product = Mage::getModel('catalog/product')->load($product_id);
-        $cats = $_product->getCategoryIds();
+        $productId = $currentProduct->getId();
+        $product = Mage::getModel('catalog/product')->load($productId);
+        $cats = $product->getCategoryIds();
         //$category_id = $cats[0]; grabs first category
        // $category_id = below fix when no catgeories
-        if (isset($cats[0])) {$category_id = $cats[0];} else {$category_id = null;}
-        $category = Mage::getModel('catalog/category')->load($category_id);
-        $category_name = $category->getName();
-        $product = $currentproduct->getName();
-        $product = str_replace('"', "", $product);
+        if (isset($cats[0])) {$categoryId = $cats[0];} else {$categoryId = null;}
+        $category = Mage::getModel('catalog/category')->load($categoryId);
+        $categoryName = $category->getName();
+        $productName = $currentProduct->getName();
 
-        echo "_paq.push(['setEcommerceView', '" . $currentproduct->getSku() . "', '" . $product . "', '" . $category_name . "', " . $currentproduct->getPrice() . " ]);";
+        echo "_paq.push(['setEcommerceView', '" . $currentProduct->getSku() . "', " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $currentProduct->getPrice() . " ]);";
         Mage::unregister('current_category');
     }
 
@@ -166,7 +165,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
         if (!($currentCategory instanceof Mage_Catalog_Model_Category)) {
             return;
         }
-        echo "_paq.push(['setEcommerceView', false, false, '" . $currentCategory->getName() . "']);";
+        echo "_paq.push(['setEcommerceView', false, false, " . json_encode($currentCategory->getName()) . "]);";
         Mage::unregister('current_product');
     }
 
