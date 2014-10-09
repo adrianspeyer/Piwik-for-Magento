@@ -45,12 +45,15 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
             foreach ($order->getAllVisibleItems() as $item) {
 
                 //get category name
-                $product_id = $item->product_id;
-                $_product = Mage::getModel('catalog/product')->load($product_id);
-                $cats = $_product->getCategoryIds();
-                $category_id = $cats[0]; // just grab the first id
-                $category = Mage::getModel('catalog/category')->load($category_id);
-                $category_name = $category->getName();
+                $productId = $item->product_id;
+                $product = Mage::getModel('catalog/product')->load($productId);
+                $categoryName = '';
+                $categoryIds = $product->getCategoryIds();
+                if (!empty($categoryIds)) {
+                    $categoryId = $categoryIds[0];
+                    $category = Mage::getModel('catalog/category')->load($categoryId);
+                    $categoryName = $category->getName();
+                }
 
 
                 if ($item->getQtyOrdered()) {
@@ -61,7 +64,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
                 $result[] = sprintf("_paq.push(['addEcommerceItem', '%s', '%s', '%s', %s, %s]);",
                     $this->jsQuoteEscape($item->getSku()),
                     $this->jsQuoteEscape($item->getName()),
-                    $category_name,
+                    $categoryName,
                     $item->getBasePrice(),
                     $qty
                 );
@@ -101,12 +104,13 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
             //get category name
             $productId = $cartItem->product_id;
             $product = Mage::getModel('catalog/product')->load($productId);
-            $cats = $product->getCategoryIds();
-            if (isset($cats)) {
-                $categoryId = $cats[0];
-            } // just grab the first id
-            $category = Mage::getModel('catalog/category')->load($categoryId);
-            $categoryName = $category->getName();
+            $categoryName = '';
+            $categoryIds = $product->getCategoryIds();
+            if (!empty($categoryIds)) {
+                $categoryId = $categoryIds[0];
+                $category = Mage::getModel('catalog/category')->load($categoryId);
+                $categoryName = $category->getName();
+            }
             $productName = $cartItem->getName();
             $productName = str_replace('"', "", $productName);
 
@@ -142,12 +146,13 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
 
         $productId = $currentProduct->getId();
         $product = Mage::getModel('catalog/product')->load($productId);
-        $cats = $product->getCategoryIds();
-        //$category_id = $cats[0]; grabs first category
-       // $category_id = below fix when no catgeories
-        if (isset($cats[0])) {$categoryId = $cats[0];} else {$categoryId = null;}
-        $category = Mage::getModel('catalog/category')->load($categoryId);
-        $categoryName = $category->getName();
+        $categoryName = '';
+        $categoryIds = $product->getCategoryIds();
+        if (!empty($categoryIds)) {
+            $categoryId = $categoryIds[0];
+            $category = Mage::getModel('catalog/category')->load($categoryId);
+            $categoryName = $category->getName();
+        }
         $productName = $currentProduct->getName();
 
         echo "_paq.push(['setEcommerceView', " . json_encode($currentProduct->getSku()) . ", " . json_encode($productName) . ", " . json_encode($categoryName) . ", " . $currentProduct->getPrice() . " ]);";
