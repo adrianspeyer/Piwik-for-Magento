@@ -18,6 +18,10 @@
     <?php
 
     if ($siteId) {
+        
+        /*path for noscript should take unadultered path*/
+        $bugPath = $installPath;
+        	
         if (strpos($installPath, "https://") !== false) {
             $secureinstallPath = $installPath;
             $installPath = str_replace("https://", "http://", $installPath);
@@ -73,7 +77,7 @@
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
                 s.parentNode.insertBefore(g,s); })();
         </script>
-        <noscript><p><img src="<?php echo $installPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+        <noscript><p><img src="<?php echo $bugPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
         <!-- END PIWIK TRACKING CODE -->
 
     <?php } ?>
