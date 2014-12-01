@@ -19,28 +19,28 @@
 
     if ($siteId) {
         
-        /*path for noscript should take unadultered path*/
+        /*path for noscript should take unaltered path*/
         $bugPath = $installPath;
         	
-        if (strpos($installPath, "https://") !== false) {
-            $secureinstallPath = $installPath;
-            $installPath = str_replace("https://", "http://", $installPath);
+        if (strpos($installPath, 'https://') !== false) {
+            $secureInstallPath = $installPath;
+            $installPath = str_replace('https://', 'http://', $installPath);
         }
-        if (strpos($installPath, "http://") === false)
-            $installPath = "http://" . $installPath;
+        if (strpos($installPath, 'http://') === false) {
+            $installPath = 'http://' . $installPath;
+            $secureInstallPath = str_replace('http://', 'https://', $installPath);
+        }
 
-        $secureinstallPath = str_replace("http://", "https://", $installPath);
+        $last = $installPath[strlen($installPath) - 1];
 
-        $last = $installPath[strlen($installPath)-1];
-
-        if ($last != "/") {
-            $installPath .= "/";
-            $secureinstallPath .= "/";
+        if ($last != '/') {
+            $installPath .= '/';
+            $secureInstallPath .= '/';
         }
 
         // 0 Search Results
         if($this->getRequest()->getControllerName()=='result') {
-            $nores = Mage::helper('catalogsearch')->getEngine()
+            $noRes = Mage::helper('catalogsearch')->getEngine()
                                                   ->getResultCollection()
                                                   ->addSearchFilter(Mage::helper('catalogsearch')
                                                   ->getQuery()
@@ -53,7 +53,7 @@
         <script type="text/javascript">
             //<![CDATA[
             var _paq = _paq || [];
-            (function(){ var u=(("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
+            (function(){ var u=(("https:" == document.location.protocol) ? "<?php echo $secureInstallPath ?>" : "<?php echo $installPath ?>");
                 _paq.push(['setSiteId', <?php echo $siteId ?>]);
                 _paq.push(['setTrackerUrl', u+'piwik.php']);
                 <?php echo $this->_getEcommerceCartUpdate()?>
@@ -61,8 +61,8 @@
                 <?php echo $this->_getProductPageview()?>
                 <?php echo $this->_getCategoryPageview()?>
 
-                <?php if (isset($nores)): ?>
-                _paq.push(['setCustomUrl', '' + document.URL + '&search_count=<?php echo $nores ?>']);
+                <?php if (isset($noRes)): ?>
+                _paq.push(['setCustomUrl', '' + document.URL + '&search_count=<?php echo $noRes ?>']);
                 <?php endif ?>
 
                 <?php
