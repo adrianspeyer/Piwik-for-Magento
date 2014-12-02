@@ -19,28 +19,13 @@
 
     if ($siteId) {
         
-        /*path for noscript should take unadultered path*/
-        $bugPath = $installPath;
-        	
-        if (strpos($installPath, "https://") !== false) {
-            $secureinstallPath = $installPath;
-            $installPath = str_replace("https://", "http://", $installPath);
-        }
-        if (strpos($installPath, "http://") === false)
-            $installPath = "http://" . $installPath;
-
-        $secureinstallPath = str_replace("http://", "https://", $installPath);
-
-        $last = $installPath[strlen($installPath)-1];
-
-        if ($last != "/") {
-            $installPath .= "/";
-            $secureinstallPath .= "/";
-        }
+        /*remove https or https*/
+	   $installPath = preg_replace('#^https?:#', '', $installPath);
+        
 
         // 0 Search Results
         if($this->getRequest()->getControllerName()=='result') {
-            $nores = Mage::helper('catalogsearch')->getEngine()
+            $noRes = Mage::helper('catalogsearch')->getEngine()
                                                   ->getResultCollection()
                                                   ->addSearchFilter(Mage::helper('catalogsearch')
                                                   ->getQuery()
@@ -53,16 +38,17 @@
         <script type="text/javascript">
             //<![CDATA[
             var _paq = _paq || [];
-            (function(){ var u=(("https:" == document.location.protocol) ? "<?php echo $secureinstallPath ?>" : "<?php echo $installPath ?>");
-                _paq.push(['setSiteId', <?php echo $siteId ?>]);
+            (function(){ 
+				var u="<?php echo $installPath ?>";
+			    _paq.push(['setSiteId', <?php echo $siteId ?>]);
                 _paq.push(['setTrackerUrl', u+'piwik.php']);
                 <?php echo $this->_getEcommerceCartUpdate()?>
                 <?php echo $this->_getOrdersTrackingCode()?>
                 <?php echo $this->_getProductPageview()?>
                 <?php echo $this->_getCategoryPageview()?>
 
-                <?php if (isset($nores)): ?>
-                _paq.push(['setCustomUrl', '' + document.URL + '&search_count=<?php echo $nores ?>']);
+                <?php if (isset($noRes)): ?>
+                _paq.push(['setCustomUrl', '' + document.URL + '&search_count=<?php echo $noRes ?>']);
                 <?php endif ?>
 
                 <?php
@@ -77,7 +63,7 @@
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
                 s.parentNode.insertBefore(g,s); })();
         </script>
-        <noscript><p><img src="<?php echo $bugPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+        <noscript><p><img src="<?php echo $installPath ?>piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
         <!-- END PIWIK TRACKING CODE -->
 
     <?php } ?>
