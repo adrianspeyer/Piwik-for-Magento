@@ -40,13 +40,7 @@ Version 1.1.6 Refactor tracker&#xD;
 access to the Piwik iframe***&#xD;
 &#xD;
 &lt;p&gt;After install, make sure you clear your cache. Click &lt;strong&gt;&lt;a href="http://www.statstory.com/piwik-ecommerce-extension-for-magento/"&gt;here&lt;/a&gt;&lt;/strong&gt; for more details on how it works and how to install.&lt;/p&gt;</description>
-<<<<<<< HEAD
     <notes>Source code Available at:  https://github.com/adriansonline/Piwik-for-Magento&#xD;
-=======
-    <notes>Piwik Search "No Search" results data in Piwik via noroute&#xD;
-&#xD;
-Source code Available at:  https://github.com/adrianspeyer/Piwik-for-Magento&#xD;
->>>>>>> origin/master
 &#xD;
 </notes>
     <authors><author><name>Adrian Speyer</name><user>AdrianSpeyer</user><email>adriansprojects@gmail.com</email></author></authors>
