@@ -30,7 +30,7 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
      * Render information about specified orders and their items
      * http://piwik.org/docs/ecommerce-analytics/
      */
-    protected function _getOrdersTrackingCode()
+    protected function _getOrdersTrackingCode($shipping_include_taxes = false)
     {
         $orderIds = $this->getOrderIds();
         if (empty($orderIds) || !is_array($orderIds)) {
@@ -76,15 +76,22 @@ class PiwikMage_PiwikAnalytics_Block_Piwik extends Mage_Core_Block_Template
                 } else {
                     $subtotal = '0.00';
                 }
-                $result[] = sprintf("_paq.push(['trackEcommerceOrder' , '%s', %s, %s, %s, %s]);",
+
+                if($shipping_include_taxes) {
+                  $shipping = $order->getBaseShippingInclTax();
+                }
+                else {
+                  $shipping = $order->getBaseShippingAmount();
+                }
+
+                $result[] = sprintf("_paq.push(['trackEcommerceOrder' , '%s', %s, %s, %s, %s, %s]);",
                     $order->getIncrementId(),
                     $order->getBaseGrandTotal(),
                     $subtotal,
                     $order->getBaseTaxAmount(),
-                    $order->getBaseShippingAmount()
+                    $shipping,
+                    $order->getDiscountAmount()
                 );
-
-
             }
         }
         return implode("\n", $result);
