@@ -21,7 +21,7 @@
                 <iframe_piwik translate="title" module="reports">
 					<title>Piwik iFrame</title>
 								<sort_order>99999</sort_order>
-								<action>piwikanalytics/index/index</action>
+								<action>adminhtml/piwikanalytics_index/index</action>
 							<depends><config>piwik/analytics/active</config></depends>
                 </iframe_piwik>
             </children>

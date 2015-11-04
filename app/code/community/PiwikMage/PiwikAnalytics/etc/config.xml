@@ -84,6 +84,15 @@
     </adminhtml>
     <admin>
         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <piwikanalytics after="Mage_Adminhtml">PiwikMage_PiwikAnalytics_Adminhtml</piwikanalytics>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+        <routers>
             <PiwikMage_PiwikAnalytics>
                 <use>admin</use>
                 <args>

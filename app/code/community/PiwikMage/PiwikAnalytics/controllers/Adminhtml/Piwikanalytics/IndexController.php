@@ -11,7 +11,7 @@
  *
  */
 
-class PiwikMage_PiwikAnalytics_IndexController extends Mage_Adminhtml_Controller_Action
+class PiwikMage_PiwikAnalytics_Adminhtml_Piwikanalytics_IndexController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {
