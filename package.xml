@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Piwik_Ecommerce</name>
-    <version>1.1.6</version>
+    <version>1.1.8</version>
     <stability>stable</stability>
     <license uri="@license http://www.gnu.org/licenses/gpl-3.0.html">GPL v3</license>
     <channel>community</channel>
@@ -36,7 +36,8 @@ Version 1.1.5 Simon fix on Github for better SKU tracking&#xD;
 &#xD;
 Version 1.1.6 Refactor tracker&#xD;
 &#xD;
-
+Version 1.1.8 Fixing admin routers for SUPEE-6788 &#xD;
+&#xD;
  	
 **You can use permissions to give any role&#xD;
 access to the Piwik iframe***&#xD;
