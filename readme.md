@@ -9,3 +9,5 @@ Open up the Piwik Analytics Control tab, enter the info and voila, all eCommerce
 
 
 *This works on Magento 1.x series*
+
+Update on the status of this plugin: http://www.statstory.com/piwik-ecommerce-extension-for-magento-update/
